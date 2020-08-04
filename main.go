@@ -37,7 +37,7 @@ type EarningsSearch struct {
 // get Earnings calender
 func getEarnings(date string) (*EarningsSearch, error) {
 	var result EarningsSearch
-	url := "https://finnhub.io/api/v1/calendar/earnings?from=" + date + "&to=" + date + "&token="+os.Getenv("APIKEY")
+	url := "https://finnhub.io/api/v1/calendar/earnings?from=" + date + "&to=" + date + "&token=" + os.Getenv("APIKEY")
 	res, err := http.Get(url)
 	if err != nil {
 		log.Fatal(err)
@@ -84,7 +84,7 @@ func main() {
 
 	if args := os.Args[1:]; len(args) < 2 {
 		tick := os.Args[1]
-		res, err := http.Get("https://finnhub.io/api/v1/quote?symbol=" + tick + "&token=os.Getenv("APIKEY")
+		res, err := http.Get("https://finnhub.io/api/v1/quote?symbol=" + tick + "&token=" + os.Getenv("APIKEY"))
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -94,7 +94,7 @@ func main() {
 		if err != nil {
 			log.Fatal(err)
 		}
-	
+
 		call, err := getStockPrice(price)
 
 		fmt.Printf("Current Price of %s is %.2f\n", tick, call.C)
